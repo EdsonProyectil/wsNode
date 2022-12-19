@@ -5,8 +5,8 @@ const express = require('express');
 const app = express();
 
 //Settings
-// app.set('port', process.env.PORT || 3000);
-app.set('port', 80);
+app.set('port', process.env.PORT || 8080);
+// app.set('port', 80);
 
 // Static Files
 // console.log(path.join(__dirname, 'public'));
