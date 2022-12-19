@@ -10,40 +10,33 @@ let actions = document.getElementById('actions');
 
 btn.addEventListener('click',function(){
 
-    // Aqui se envia la informacion del cliente al servidor
+    // Aqui se envia la informacion del CLIENTE al SERVIDOR
     socket.emit('chat:message',{
         username: username.value,
-        message: message.value        
+        message: message.value
     });
 
-    // console.log({
-    //     username: username.value,
-    //     message: message.value
-    // });
 });
 
 message.addEventListener('keypress', function(){
     socket.emit('chat:typing', username.value);
 });
 
-// Aqui el cliente ESCUCHA (recibe) la accion del index.js (servidor)
+// Aqui el cliente ESCUCHA (RECIBE) la accion del index.js (SERVIDOR)
 socket.on('chat:message', function (data){
-    console.log(data);
-
     actions.innerHTML = '';
+
+    console.log(data);
     output.innerHTML += `<p>
-        <strong>${data.username}</strong>: ${data.message}
-    </p>`;
+    <strong>${data.username}</strong>: ${JSON.stringify(data.message)}
+    </p>`;    
 
 }); 
 
 socket.on('chat:typing', function (data){
-    // console.log(data);
 
     actions.innerHTML = `<p>
         <em>${data} id typing a message</em>
     </p>`;
 
 }); 
-
-
