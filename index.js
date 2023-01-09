@@ -163,7 +163,6 @@ io.on('connection', (socket) => {
                         username: data.username,
                         message: resultado
                     });
-    
                 }else{
                     console.log("Error SE-001. Los sensores aceptados son: 'ENERGY' y 'DOOR'.");
                 }
